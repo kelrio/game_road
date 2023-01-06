@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <table id="map"></table>
+    
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script>
+        $(function(){
+            console.log("load");
+            var map = [
+                [1,1,1,1,1,1,1,1,1,1,1],
+                [1,0,0,0,0,0,0,0,0,0,1],
+                [1,0,1,1,1,1,1,1,1,0,1],
+                [1,0,0,0,0,0,0,0,1,0,1],
+                [1,0,1,1,1,1,1,0,1,0,1],
+                [1,0,1,0,0,0,0,0,1,0,1],
+                [1,0,0,0,1,1,1,2,1,3,1],
+                [1,1,1,1,1,1,1,1,1,1,1]
+            ];
+
+            function render(map){
+                console.log("render");
+
+                //generowanie mapy na podstawie macieży
+                var html = ``;
+                map.forEach(row => {
+                    html += `<tr>`;
+                    row.forEach(field => {
+                        html += `<td style="background: `;
+                        if(field == 0) html += `white`;
+                        else if(field == 1) html += `black`;
+                        else if(field == 2) html += `blue`;
+                        else if(field == 3) html += `green`;
+                        html += `"></td>`;
+                    });
+                    html += `<tr>`;
+                });
+
+                //dodanie mapy do planszy
+                $(`#map`).html(html);
+                console.log($(`#map`))
+            }
+
+            render(map);
+        })
+        
+    
+    </script>
+    <style>
+        td{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</body>
+</html>
