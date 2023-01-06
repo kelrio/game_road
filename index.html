@@ -14,6 +14,8 @@
     <script>
         $(function(){
             console.log("load");
+
+            // mapa
             var map = [
                 [1,1,1,1,1,1,1,1,1,1,1],
                 [1,0,0,0,0,0,0,0,0,0,1],
@@ -48,7 +50,17 @@
                 console.log($(`#map`))
             }
 
+            function find_road(map){
+
+                return map
+            }
+
             render(map);
+            find_road(map);
+            setTimeout(() => {
+                render(map);
+                find_road(map);
+            }, 500);
         })
         
     
